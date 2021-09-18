@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Last Artist Stats</title>
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <h1>Last Artist Stats</h1>
-</body>
+    <div class="buttons">
+      <button id="get-top-artists">Get top artists</button>
+      <button id="sort">Sort by scrobbles descending</button>
+      <button id="get-user-top-artists">Get top artists by user</button>
+    </div>
+    <table class="table">
+      <tbody id="artistTable">
+        <tr class="info">
+          <th>Artist</th>
+          <th>Listeners</th>
+          <th>Scrobbles</th>
+        </tr>
+      </tbody>
+    </table>
+    <script src="script.js"></script>
+  </body>
 </html>
