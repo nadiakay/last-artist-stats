@@ -8,11 +8,21 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Last Artist Stats</h1>
+    <h1>Last Artist Stats&nbsp;&nbsp;&nbsp;&nbsp;<small>v 0.1</small></h1>
+    <p>
+      Enter a last.fm username below, or leave blank to return overall charts
+    </p>
+    <div class="form">
+      <input
+        type="textbox"
+        class="textbox"
+        id="user-txt"
+        placeholder="username"
+      />
+    </div>
     <div class="buttons">
       <button id="get-top-artists">Get top artists</button>
-      <button id="sort">Sort by scrobbles descending</button>
-      <button id="get-user-top-artists">Get top artists by user</button>
+      <button hidden id="sort">Sort by scrobbles descending</button>
     </div>
     <table class="table">
       <tbody id="artistTable">

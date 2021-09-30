@@ -4,9 +4,9 @@ const LASTFM_API_KEY = "5e7443ce206de81a5b342b82bcd4096b";
 
 //get html elements
 const main = document.getElementById("main");
+const userTextbox = document.getElementById("user-txt");
 const table = document.getElementById("artistTable");
 const getTopArtistsBtn = document.getElementById("get-top-artists");
-const getUserTopArtistsBtn = document.getElementById("get-user-top-artists");
 const sortBtn = document.getElementById("sort");
 
 /*
@@ -29,17 +29,21 @@ async function getTopArtists() {
 }
 
 //fetch top artists for user (default WojPaint; havent implemented user select)
-async function getUserTopArtists(user) {
-  const url =
-    LASTFM_API_URL +
-    "user.getTopArtists&api_key=" +
-    LASTFM_API_KEY +
-    "&format=json&user=" +
-    user;
-  const res = await fetch(url);
-  const artistsData = await res.json();
-  addArtists(artistsData.topartists);
-  updateTable();
+async function getUserTopArtists() {
+  const user = document.getElementById("user-txt").value;
+  if (!user) getTopArtists();
+  else {
+    const url =
+      LASTFM_API_URL +
+      "user.getTopArtists&api_key=" +
+      LASTFM_API_KEY +
+      "&format=json&user=" +
+      user;
+    const res = await fetch(url);
+    const artistsData = await res.json();
+    addArtists(artistsData.topartists);
+    updateTable();
+  }
 }
 
 //sort top artists by playcount, descending
@@ -65,28 +69,31 @@ function addArtists(artists) {
  */
 function updateTable(providedData = artistsData) {
   //clear table and add a header row
-  table.innerHTML = `
+  var headRow = `
   <tr class="info">
-    <th>Artist</th>
-    <th>Listeners</th>
-    <th>Scrobbles</th>
+    <th>Artist</th>`;
+  if (providedData[0].listeners) headRow += `<th>Listeners</th>`; //only add listeners column to top charts, not user charts
+  headRow += `<th>Scrobbles</th>
   </tr>`;
+  table.innerHTML = headRow;
 
   providedData.forEach((artist) => {
     const row = document.createElement("tr");
     row.classList.add("artist");
-    row.innerHTML = `<tr>
-    <td>${artist.name}</td>
-    <td>${Number(artist.listeners).toLocaleString("en-US")}</td>
-    <td>${Number(artist.playcount).toLocaleString("en-US")}</td>
+
+    var newRow = `<tr>
+    <td>${artist.name}</td>`;
+    if (providedData[0].listeners)
+      newRow += `<td>${Number(artist.listeners).toLocaleString("en-US")}</td>`; //only add listeners column to top charts, not user charts
+    newRow += `<td>${Number(artist.playcount).toLocaleString("en-US")}</td>
     </tr>`;
+    console.log(newRow);
+    row.innerHTML = newRow;
+
     table.appendChild(row);
   });
 }
 
 //event listeners
-getTopArtistsBtn.addEventListener("click", getTopArtists);
+getTopArtistsBtn.addEventListener("click", getUserTopArtists);
 sortBtn.addEventListener("click", sortScrobblesDescending);
-getUserTopArtistsBtn.addEventListener("click", () =>
-  getUserTopArtists("WojPaint")
-);

@@ -14,6 +14,10 @@ body {
   margin: 0;
 }
 
+h1 small {
+  font-size: 0.5em;
+}
+
 table {
   display: flex;
   align-items: center;
@@ -55,28 +59,13 @@ button {
   width: 100%;
   padding: 10px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 1em;
 }
 
 button + button {
-  margin-left: 10px;
+  margin-left: 2em;
 }
 
-h2 {
-  border-bottom: 1px solid #111;
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 300;
-  margin: 0 0 20px;
-}
-
-h3 {
-  background-color: #fff;
-  border-bottom: 1px solid #111;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 300;
-  margin: 20px 0 0;
+.textbox {
+  margin-bottom: 2em;
 }
