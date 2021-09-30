@@ -18,6 +18,28 @@ h1 small {
   font-size: 0.5em;
 }
 
+.form {
+  padding: 1.5em;
+}
+
+input {
+  font-size: 1em;
+  max-width: 50%;
+}
+
+button {
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+  background-color: #fff;
+  border: solid 1px #999;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  padding: 0.5em;
+  margin-left: 1em;
+  font-weight: bold;
+  font-size: 1em;
+}
+
 table {
   display: flex;
   align-items: center;
@@ -45,27 +67,8 @@ td {
   text-align: center;
 }
 
-.buttons {
-  display: flex;
-}
-
-button {
-  cursor: pointer;
-  font-family: "Open Sans", sans-serif;
-  background-color: #fff;
-  border: solid 1px #999;
-  border-radius: 5px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-  width: 100%;
-  padding: 10px;
-  font-weight: bold;
-  font-size: 1em;
-}
-
-button + button {
-  margin-left: 2em;
-}
-
-.textbox {
-  margin-bottom: 2em;
+@media only screen and (max-width: 800px) {
+  tr {
+    width: 100vw;
+  }
 }

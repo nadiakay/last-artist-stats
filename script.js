@@ -3,11 +3,9 @@ const LASTFM_API_URL = "http://ws.audioscrobbler.com/2.0/?method=";
 const LASTFM_API_KEY = "5e7443ce206de81a5b342b82bcd4096b";
 
 //get html elements
-const main = document.getElementById("main");
 const userTextbox = document.getElementById("user-txt");
 const table = document.getElementById("artistTable");
 const getTopArtistsBtn = document.getElementById("get-top-artists");
-const sortBtn = document.getElementById("sort");
 
 /*
  *array of json objects
@@ -44,13 +42,6 @@ async function getUserTopArtists() {
     addArtists(artistsData.topartists);
     updateTable();
   }
-}
-
-//sort top artists by playcount, descending
-function sortScrobblesDescending() {
-  artistsData.sort((a, b) => b.playcount - a.playcount);
-
-  updateTable();
 }
 
 /*
@@ -96,4 +87,3 @@ function updateTable(providedData = artistsData) {
 
 //event listeners
 getTopArtistsBtn.addEventListener("click", getUserTopArtists);
-sortBtn.addEventListener("click", sortScrobblesDescending);
