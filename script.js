@@ -78,7 +78,6 @@ function updateTable(providedData = artistsData) {
       newRow += `<td>${Number(artist.listeners).toLocaleString("en-US")}</td>`; //only add listeners column to top charts, not user charts
     newRow += `<td>${Number(artist.playcount).toLocaleString("en-US")}</td>
     </tr>`;
-    console.log(newRow);
     row.innerHTML = newRow;
 
     table.appendChild(row);
