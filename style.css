@@ -7,19 +7,20 @@
 body {
   background: #ffffff;
   font-family: "Open Sans", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
+  text-align: center;
+  margin: auto;
 }
 
-h1 small {
+small {
   font-size: 0.5em;
 }
 
+.container {
+  margin: 3em;
+}
+
 .form {
-  padding: 1.5em;
+  padding: 2em;
 }
 
 input {
@@ -32,9 +33,9 @@ button {
   font-family: "Open Sans", sans-serif;
   background-color: #fff;
   border: solid 1px #999;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
   border-radius: 5px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-  padding: 0.5em;
+  padding: 0.4em;
   margin-left: 1em;
   font-weight: bold;
   font-size: 1em;

@@ -9,21 +9,21 @@
   </head>
   <body>
     <h1>Last Artist Stats&nbsp;&nbsp;&nbsp;&nbsp;<small>v 0.1</small></h1>
-    <p>
-      Enter a last.fm username below, or leave blank to return overall charts
-    </p>
+    <div class="container">
+      <p>Enter a last.fm username below, or leave blank to return overall charts</p>
     <div class="form">
-      <input
-        type="textbox"
-        class="textbox"
-        id="user-txt"
-        placeholder="username"
-      />
-      <button id="get-top-artists">Get top artists</button>
+        <input
+          type="textbox"
+          class="textbox"
+          id="user-txt"
+          placeholder="username"
+        />
+        <button id="get-top-artists">Get top artists</button>
     </div>
     <table class="table">
       <tbody id="artistTable"></tbody>
     </table>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
