@@ -8,10 +8,7 @@ const displayLog = document.getElementById("log");
 const table = document.getElementById("artistTable");
 const getTopArtistsBtn = document.getElementById("get-top-artists");
 
-// stores array of json objects fetched from api
-let artistsData = [];
-
-// return
+// returns url for given method + user
 function getURL(method, user) {
   var url = LASTFM_API_URL +
     method +
@@ -27,8 +24,7 @@ async function getTopArtists() {
   try {
     const res = await fetch(getURL("chart.getTopArtists"));
     const data = await res.json();
-    addArtists(data.artists.artist);
-    updateTable();
+    updateTable(data.artists.artist);
   }
   catch (err) {
     displayLog.innerHTML = "Request failed. " + err;
@@ -47,8 +43,7 @@ async function getUserTopArtists() {
       const res = await fetch(getURL("user.getTopArtists", user));
       if(res.statusText === "Not Found") throw Error('User not found');
       const data = await res.json();
-      addArtists(data.topartists.artist);
-      updateTable();
+      updateTable(data.topartists.artist);
     }
   }
   catch (err) {
@@ -57,33 +52,25 @@ async function getUserTopArtists() {
   }
 }
 
-// clear artists array, then push provided json artists to array
-function addArtists(artists) {
-  artistsData = [];
-  artists.forEach((artist) => {
-    artistsData.push(artist);
-  });
-}
-
 // update table DOM to display stored artist data/
-function updateTable(providedData = artistsData) {
+function updateTable(artists) {
   displayLog.innerHTML = "";
   //clear table and add a header row
   var headRow = `
   <tr class="info">
     <th>Artist</th>`;
-  if (providedData[0].listeners) headRow += `<th>Listeners</th>`; //only add listeners column to top charts, not user charts
+  if (artists[0].listeners) headRow += `<th>Listeners</th>`; //only add listeners column to top charts, not user charts
   headRow += `<th>Scrobbles</th>
   </tr>`;
   table.innerHTML = headRow;
 
-  providedData.forEach((artist) => {
+  artists.forEach((artist) => {
     const row = document.createElement("tr");
     row.classList.add("artist");
 
     var newRow = `<tr>
     <td>${artist.name}</td>`;
-    if (providedData[0].listeners)
+    if (artists[0].listeners)
       newRow += `<td>${Number(artist.listeners).toLocaleString("en-US")}</td>`; //only add listeners column to top charts, not user charts
     newRow += `<td>${Number(artist.playcount).toLocaleString("en-US")}</td>
     </tr>`;
