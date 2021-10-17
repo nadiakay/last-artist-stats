@@ -7,4 +7,5 @@ Live demo (v 0.11): https://nadia-kapusta.neocities.org/app/last-artist-stats/in
 Changelog:
 
 10/17/2021  v0.11   Error handling and code cleanup
+
 9/29/2021   v0.1    Get data for username specified
