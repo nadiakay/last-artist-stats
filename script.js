@@ -1,5 +1,5 @@
 // api info
-const LASTFM_API_URL = "http://ws.audioscrobbler.com/2.0/?method=";
+const LASTFM_API_URL = "https://ws.audioscrobbler.com/2.0/?method=";
 const LASTFM_API_KEY = "5e7443ce206de81a5b342b82bcd4096b";
 
 // get html elements
